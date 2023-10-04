@@ -1,6 +1,6 @@
 
 class Hotel:
-   
+       
     def anadirHuespedes(lista):
         nombre = input("Ingrese el nombre del huesped: ")
         doc = int(input("Ingrese el documento de identidad del huesped: "))
@@ -59,9 +59,44 @@ class Hotel:
         else:
             print("opcion no valida")
         return lista
-
-
-
-
-
+    def consultarHabitaciones(lista):
+        opt = int(input("Ingresa la opción"))
+        if opt == 1:
+            for i in range(1, 11):
+                if lista.count(i) == 0:
+                    print(f"Habitación {str(i)} disponible")
+        elif opt == 2:
+            for i in range (1, 11):
+                if lista.count(i) == 1:
+                    print(f"Habitación {i} ocupada")
+        else:
+            print("Opción inválida.")
+        return lista
     
+    def finalizar():
+        print("Programa finalizado.")
+        return False
+    def menu(lista):
+        opt = 0
+        while opt != 5:
+            print("1. Añadir un huésped.")
+            print("2. Eliminar un huésped.")
+            print("3. Consultas vigentes por huésped")
+            print("4. Consulta de habitaciones")
+            print("5. Salir")
+            opcion = int(input("Ingrese la opcion: "))
+            if opcion == 1:
+                lista = Hotel.anadirHuespedes(lista)
+            elif opcion == 2:
+                lista = Hotel.eliminarHuespedes(lista)
+            elif opcion == 3:
+                lista = Hotel.consultarVigentes(lista)
+            elif opcion == 4:
+                lista = Hotel.consultarHabitaciones(lista)
+            elif opcion == 5:
+                lista = Hotel.salir()
+            else:
+                print("Opción inválida.")
+
+lista = []
+lista = Hotel.menu(lista)
