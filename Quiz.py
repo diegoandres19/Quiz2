@@ -7,9 +7,9 @@ class Hotel:
             lista.append(nombre)
             lista.append(doc)
             lista.append(habitacion)
-            print("Se ha añadido el huesped " + nombre + " con documento de identidad " + str(doc) + " a la habitacion " + str(habitacion))
+            print(f"Se ha añadido a \"{nombre}\", con documento de identidad {doc}, a la habitación {habitacion}")
         else:
-            print("La habitacion " + str(habitacion) + " ya esta ocupada")
+            print(f"La habitación {habitacion} ya está ocupada.")
         return lista
 
     def eliminarHuesped(lista):
@@ -17,38 +17,27 @@ class Hotel:
         if lista.count(doc) == 1:
             posicion = lista.index(doc)
             lista.pop(posicion)
-            print("Se ha eliminado el huesped con documento de identidad: " + str(doc))
+            print(f"Se ha eliminado el huesped con documento de identidad: {doc}")
         else:
-            print("El documento de identidad " + str(doc) + " no esta registrado")
+            print(f"El documento de identidad \"{doc}\" no esta registrado")
         return lista
 
     def consulVigentes(lista):
-        opt = int(input("Ingrese la opcion (1) para Individual y (2) para Total): "))
+        opt = int(input("Ingrese la opcion (1) para una consulta individual y (2) para una general): "))
         if opt == 1:
             doc = int(input("Ingrese el documento de identidad del huesped: "))
             if lista.count(doc) == 1:
                 posicion = lista.index(doc)
-                print("Nombre: " + lista[posicion - 1])
-                print("Documento de identidad: " + str(lista[posicion]))
-                print("Habitacion: " + str(lista[posicion + 1]))
+                print(f"Nombre: {lista[posicion -1]}")
+                print(f"Documento de identidad: {lista[posicion]}")
+                print(f"Habitacion: {lista[posicion + 1]}")
             else:
-                print("El documento de identidad " + str(doc) + " no esta registrado")
+                print(f"El documento de identidad {doc} no esta registrado")
         elif opt == 2:
-            opt = int(input("Ingrese la opcion: "))
-            if opt == 1:
-                doc = int(input("Ingrese el documento de identidad del huesped: "))
-                if lista.count(doc) == 1:
-                    posicion = lista.index(doc)
-                    print("Nombre: " + lista[posicion - 1])
-                    print("Documento de identidad: " + str(lista[posicion]))
-                    print("Habitacion: " + str(lista[posicion + 1]))
-                else:
-                    print("El documento de identidad " + str(doc) + " no esta registrado")
-            elif opt == 2:
-                for i in range(0, len(lista), 3):
-                    print("Nombre: " + lista[i])
-                    print("Documento de identidad: " + str(lista[i + 1]))
-                    print("Habitacion: " + str(lista[i + 2]))
+            for i in range(0, len(lista), 3):
+                    print(f"Nombre: {lista[i]}")
+                    print(f"Documento de identidad: {lista[i + 1]}" )
+                    print(f"Habitacion: {lista[i + 2]}")
             else:
                 print("La opcion ingresada no es valida")
         else:
@@ -60,11 +49,11 @@ class Hotel:
         if opt == 1:
             for i in range(1, 11):
                 if lista.count(i) == 0:
-                    print("Habitacion " + str(i) + " disponible")
+                    print(f"Habitacion {i} disponible")
         elif opt == 2:
             for i in range(1, 11):
                 if lista.count(i) == 1:
-                    print("Habitacion " + str(i) + " ocupada")
+                    print(f"Habitacion {i} ocupada")
         else:
             print("La opcion ingresada no es valida")
         return lista
